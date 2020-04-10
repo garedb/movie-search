@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+</head>
+<body>
+	<div>
+		
+		<h1>Results for <%= query %></h1>
+		
+		<h2>(Page <%= page %>)</h2>
+
+		<a href="/">
+			<button>
+				&larr; Back Home
+			</button>
+		</a>
+		
+		<% results.forEach(m => { %>
+			<div>
+				<h2>
+					<%= m.Title %> (<%= m.Year %>)
+				</h2>
+				<img src="<%= m.Poster %>" alt="Poster">
+			</div>
+	    <% }) %>
+	    
+	    <% if (page > 1) { %>
+	    <a href="/search?query=<%=query%>&page=<%=page-1%>">
+			<button>
+				&larr; Previous Page
+			</button>
+		</a>
+		<% } %>
+		
+		<a href="/search?query=<%=query%>&page=<%=page+1%>">
+			<button>
+				&rarr; Next Page
+			</button>
+		</a>
+	</div>
+
+</body>
+</html>
